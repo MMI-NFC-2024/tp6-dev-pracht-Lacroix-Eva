@@ -5,12 +5,9 @@ import cars from "../../../assets/cars.json";
 export async function getStaticPaths() {
   // Extraire toutes les années uniques du fichier cars.json
   const years = Array.from(new Set(cars.map((car) => car.year)));
-  return {
-    paths: years.map((year) => ({
-      params: { year: String(year) },
-    })),
-    fallback: false,
-  };
+  return years.map((year) => ({
+    params: { year: String(year) },
+  }));
 }
 
 import PlotFigure from "../../../components/PlotFigure.astro";
