@@ -1,0 +1,29 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import cars from "../../../assets/cars.json";
+const years = [...new Set(cars.map((c) => c.year))].sort();
+---
+
+<Layout>
+  <h1 class="text-3xl font-bold text-center text-purple-600 m-4">
+    Voitures – Rendu statique
+  </h1>
+
+  <p class="text-center mb-6">
+    Cliquez sur une année pour voir les graphiques correspondants.
+  </p>
+  <ul class="max-w-md mx-auto space-y-3">
+    {
+      years.map((y) => (
+        <li>
+          <a
+            href={`/voiture/rendu-statique/${y}`}
+            class="block px-4 py-2 rounded-lg bg-purple-100 hover:bg-purple-300 text-purple-800 font-medium shadow transition"
+          >
+            Année : {y}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

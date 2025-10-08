@@ -22,18 +22,48 @@ import "../styles/global.css";
         Accueil
       </a>
       <nav>
-        <ul
-          style="display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0;"
-        >
-          <li>
-            <a
-              href="/rendu-dynamique"
-              style="color: white; text-decoration: none; font-weight: 500; padding: 0.5rem 1rem; border-radius: 6px; transition: background 0.2s;"
-            >
-              Rendu dynamique
-            </a>
-          </li>
-        </ul>
+        <div style="display: flex; gap: 1rem;">
+          <form
+            method="GET"
+            onChange="if(this.Penguins.value) window.location=this.Penguins.value;"
+          >
+            <select name="Penguins" class="select">
+              <option value="" style="color: #000000;"> Rendu Penguins </option>
+              <option
+                value="/penguin/rendu-dynamique"
+                style="color: #058da5; background: #f0fdfa;"
+              >
+                Rendu dynamique
+              </option>
+              <option
+                value="/penguin/rendu-statique"
+                style="color: #2c23d5; background: #f0fdfa;"
+              >
+                Rendu statique
+              </option>
+            </select>
+          </form>
+          <form
+            method="GET"
+            onChange="if(this.Voiture.value) window.location=this.Voiture.value;"
+          >
+            <select name="Voiture" class="select">
+              <option value="" style="color: #000000;"> Rendu Voiture </option>
+              <option
+                value="/voiture/rendu-dynamique"
+                style="color: #058da5; background: #f0fdfa;"
+              >
+                Rendu dynamique
+              </option>
+              <option
+                value="/voiture/rendu-statique"
+                style="color: #2c23d5; background: #f0fdfa;"
+              >
+                Rendu statique
+              </option>
+            </select>
+          </form>
+        </div>
       </nav>
     </header>
     <slot />

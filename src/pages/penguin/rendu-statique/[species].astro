@@ -1,8 +1,16 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import penguins from "../../assets/penguins.json";
-export const prerender = false;
-import PlotFigure from "../../components/PlotFigure.astro";
+import Layout from "../../../layouts/Layout.astro";
+import penguins from "../../../assets/penguins.json";
+
+export async function getStaticPaths() {
+    // Extraire toutes les espèces uniques du fichier JSON
+    const speciesList = [...new Set(penguins.map((p) => p.species))];
+    return speciesList.map((species) => ({
+        params: { species }
+    }));
+}
+
+import PlotFigure from "../../../components/PlotFigure.astro";
 import * as Plot from "@observablehq/plot";
 
 const { species } = Astro.params;
